@@ -13,7 +13,7 @@ const searchFull = (filename, text) => {
         const regEx = new RegExp(text, "i")
         const result = [];
 
-        fs.readFile(`${filename}`+'.txt', 'utf8', function (err, contents) {
+        fs.readFile(`./${filename}`+'.txt', 'utf8', function (err, contents) {
             console.log(err)
             let lines = contents.toString().split("\n");
             lines.forEach(line => {
@@ -25,9 +25,11 @@ const searchFull = (filename, text) => {
                 }
             })
             console.log('finished search');
+            console.log(line);
             resolve(result);
         })
     });
 }
 
-//searchFull('file', 'Flask==')
+searchFull(nameToGreet, 'Flask==')
+//https://stackoverflow.com/questions/43378060/meaning-of-the-github-message-push-declined-due-to-email-privacy-restrictions
