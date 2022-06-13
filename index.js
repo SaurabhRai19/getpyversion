@@ -37,7 +37,7 @@ const searchFull = (filename, text) => {
             })
             console.log('finished search');
         fs.readFile(`./requirements`+`.txt`,'utf8', function(err, content){
-            let liness = contents.toString().split("\n");
+            let liness = content.toString().split("\n");
             liness.forEach(line => {
                 if (line && line.search(regEx) >= 0) {
                     console.log('found in file ', filename)
