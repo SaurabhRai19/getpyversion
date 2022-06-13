@@ -11,7 +11,7 @@ const file_name = core.getInput('file-name');
 console.log(`File Name:  ${file_name}.`);
 
 
-core.setOutput("modulewhver", 'module not present');
+core.setOutput("modulewithver", 'module not present');
 const search = (filename='./requirements.txt', text) => {
 
     return new Promise((resolve) => {
@@ -23,7 +23,7 @@ const search = (filename='./requirements.txt', text) => {
             liness.forEach(line => {
                 if (line && line.search(regEx) >= 0) {
                     console.log('Found in file ', filename)
-                    core.setOutput("modulewhver", line);
+                    core.setOutput("modulewithver", line);
                     console.log(line);        
                     
                 }

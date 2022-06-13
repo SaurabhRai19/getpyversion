@@ -9,7 +9,7 @@ inputs:
     description: "Path to test script"
     default: "requirements.txt"
 outputs:
-  modulewhver: # id of output
+  modulewithver: # id of output
     description: 'The module whose version we needed'
 runs:
   using: 'node16'
