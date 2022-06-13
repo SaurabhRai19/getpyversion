@@ -4,56 +4,57 @@ const github = require('@actions/github');
 const path = require('path');
 
 // `who-to-greet` input defined in action metadata file
-const nameToGreet = core.getInput('module-name');
-console.log(`Module Name:  ${nameToGreet}!`);
+const nameOfModule = core.getInput('module-name');
+console.log(`Module Name:  ${nameToGreet}.`);
 
-const filepath = core.getInput('file-path');
-console.log(`Module Name:  ${filepath}!`);
+const file_name = core.getInput('file-name');
+console.log(`File Name:  ${file_name}.`);
 
 
 const file= fs.readFileSync(
     path.join('file.txt')
 )
 
-console.log(file);
+console.log(file); //prints file content
 
-const searchFull = (filename, text) => {
+const searchFull = (filename='./requirements.txt', text) => {
 
     return new Promise((resolve) => {
         
         const regEx = new RegExp(text, "i")
         const result = [];
 
-        fs.readFile(`./file`+'.txt', 'utf8', function (err, contents) {
-            console.log(err)
-            let lines = contents.toString().split("\n");
-            lines.forEach(line => {
-                if (line && line.search(regEx) >= 0) {
-                    console.log('found in file ', filename)
-                    result.push(line)
-                    console.log(line);        
+        // fs.readFile(`./file`+'.txt', 'utf8', function (err, contents) {
+        //     console.log(err)
+        //     let lines = contents.toString().split("\n");
+        //     lines.forEach(line => {
+        //         if (line && line.search(regEx) >= 0) {
+        //             console.log('found in file ', filename)
+        //             result.push(line)
+        //             console.log(line);        
                     
-                }
-            })
-            console.log('finished search');
-        fs.readFile(`./requirements`+`.txt`,'utf8', function(err, content){
+        //         }
+        //     })
+        //     console.log('finished search');
+        // })
+        fs.readFile(`${filename}`,'utf8', function(err, content){
             let liness = content.toString().split("\n");
             liness.forEach(line => {
                 if (line && line.search(regEx) >= 0) {
                     console.log('found in file ', filename)
                     result.push(line)
-                    core.setOutput("time", line);
+                    core.setOutput("modulewhver", line);
                     console.log(line);        
                     
                 }
             })
         })
             resolve(result);
-        })
+    
     });
     
     
 }
 
-searchFull('file', nameToGreet)
+searchFull(file_name, nameOfModule);
 //https://stackoverflow.com/questions/43378060/meaning-of-the-github-message-push-declined-due-to-email-privacy-restrictions
