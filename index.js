@@ -16,8 +16,8 @@ const file= fs.readFileSync(
 )
 
 console.log(file); //prints file content
-
-const searchFull = (filename='./requirements.txt', text) => {
+core.setOutput("modulewhver", 'module not present');
+const search = (filename='./requirements.txt', text) => {
 
     return new Promise((resolve) => {
         
@@ -56,5 +56,5 @@ const searchFull = (filename='./requirements.txt', text) => {
     
 }
 
-searchFull(file_name, nameOfModule);
+search(file_name, nameOfModule);
 //https://stackoverflow.com/questions/43378060/meaning-of-the-github-message-push-declined-due-to-email-privacy-restrictions
