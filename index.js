@@ -10,6 +10,7 @@ console.log(`Module Name:  ${nameToGreet}!`);
 const filepath = core.getInput('file-path');
 console.log(`Module Name:  ${filepath}!`);
 
+
 const file= fs.readFileSync(
     path.join('file.txt')
 )
@@ -35,7 +36,17 @@ const searchFull = (filename, text) => {
                 }
             })
             console.log('finished search');
-            
+        fs.readFile(`./requirements`+`.txt`,'utf8', function(err, content){
+            let liness = contents.toString().split("\n");
+            liness.forEach(line => {
+                if (line && line.search(regEx) >= 0) {
+                    console.log('found in file ', filename)
+                    result.push(line)
+                    console.log(line);        
+                    
+                }
+            })
+        })
             resolve(result);
         })
     });

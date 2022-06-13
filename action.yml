@@ -8,7 +8,7 @@ inputs:
   file-path:
     description: "Path to test script"
     required: true
-    default: "requirements.txt"
+    default: "./requirements.txt"
 outputs:
   time: # id of output
     description: 'The time we greeted you'
