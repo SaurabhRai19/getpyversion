@@ -10,7 +10,7 @@ inputs:
     default: "requirements.txt"
 outputs:
   modulewhver: # id of output
-    description: 'The module whose version we need to find'
+    description: 'The module whose version we needed'
 runs:
   using: 'node16'
   main: 'index.js'

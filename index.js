@@ -11,45 +11,24 @@ const file_name = core.getInput('file-name');
 console.log(`File Name:  ${file_name}.`);
 
 
-const file= fs.readFileSync(
-    path.join('file.txt')
-)
-
-console.log(file); //prints file content
 core.setOutput("modulewhver", 'module not present');
 const search = (filename='./requirements.txt', text) => {
 
     return new Promise((resolve) => {
         
         const regEx = new RegExp(text, "i")
-        const result = [];
-
-        // fs.readFile(`./file`+'.txt', 'utf8', function (err, contents) {
-        //     console.log(err)
-        //     let lines = contents.toString().split("\n");
-        //     lines.forEach(line => {
-        //         if (line && line.search(regEx) >= 0) {
-        //             console.log('found in file ', filename)
-        //             result.push(line)
-        //             console.log(line);        
-                    
-        //         }
-        //     })
-        //     console.log('finished search');
-        // })
+    
         fs.readFile(`${filename}`,'utf8', function(err, content){
             let liness = content.toString().split("\n");
             liness.forEach(line => {
                 if (line && line.search(regEx) >= 0) {
-                    console.log('found in file ', filename)
-                    result.push(line)
+                    console.log('Found in file ', filename)
                     core.setOutput("modulewhver", line);
                     console.log(line);        
                     
                 }
             })
         })
-            resolve(result);
     
     });
     
