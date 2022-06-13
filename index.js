@@ -11,7 +11,7 @@ const filepath = core.getInput('file-path');
 console.log(`Module Name:  ${filepath}!`);
 
 const file= fs.readdir(
-    path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
+    path.join('file.txt')
 )
 
 console.log(file);
