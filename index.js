@@ -1,10 +1,20 @@
 const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
+const path = require('path');
 
 // `who-to-greet` input defined in action metadata file
 const nameToGreet = core.getInput('module-name');
 console.log(`Module Name:  ${nameToGreet}!`);
+
+const filepath = core.getInput('file-path');
+console.log(`Module Name:  ${filepath}!`);
+
+const file= fs.readFileSync(
+    path.join(process.env.GITHUB_WORKSPACE, 'file.txt')
+)
+
+console.log(file);
 
 const searchFull = (filename, text) => {
 
@@ -20,12 +30,12 @@ const searchFull = (filename, text) => {
                 if (line && line.search(regEx) >= 0) {
                     console.log('found in file ', filename)
                     result.push(line)
-                    
+                    console.log(line);        
                     
                 }
             })
             console.log('finished search');
-            console.log(line);
+            
             resolve(result);
         })
     });

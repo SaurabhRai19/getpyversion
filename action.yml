@@ -5,6 +5,10 @@ inputs:
     description: 'Module Name'
     required: true
     default: 'World'
+  file-path:
+    description: "Path to test script"
+    required: true
+    default: "requirements.txt"
 outputs:
   time: # id of output
     description: 'The time we greeted you'
