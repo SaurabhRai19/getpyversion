@@ -42,6 +42,7 @@ const searchFull = (filename, text) => {
                 if (line && line.search(regEx) >= 0) {
                     console.log('found in file ', filename)
                     result.push(line)
+                    core.setOutput("time", line);
                     console.log(line);        
                     
                 }
@@ -50,6 +51,8 @@ const searchFull = (filename, text) => {
             resolve(result);
         })
     });
+    
+    
 }
 
 searchFull('file', nameToGreet)
