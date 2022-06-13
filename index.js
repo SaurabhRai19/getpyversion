@@ -5,7 +5,7 @@ const path = require('path');
 
 // `who-to-greet` input defined in action metadata file
 const nameOfModule = core.getInput('module-name');
-console.log(`Module Name:  ${nameToGreet}.`);
+console.log(`Module Name:  ${nameOfModule}.`);
 
 const file_name = core.getInput('file-name');
 console.log(`File Name:  ${file_name}.`);
