@@ -10,8 +10,8 @@ console.log(`Module Name:  ${nameToGreet}!`);
 const filepath = core.getInput('file-path');
 console.log(`Module Name:  ${filepath}!`);
 
-const file= fs.readFileSync(
-    path.join(process.env.GITHUB_WORKSPACE, 'file.txt')
+const file= fs.readdir(
+    path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
 )
 
 console.log(file);
